@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DemoApp</string>
+    <string name="navigation_drawer_open">Open Navigation</string>
+    <string name="navigation_drawer_close">Close Navigation</string>
+    <string name="rov_paragraph">
+    <![CDATA[
+    <b>Remotely Operated Vehicle (ROV) Project</b><br/><br/>
+    This project showcases a fully wireless underwater Remotely Operated Vehicle (ROV) developed for industrial and environmental applications. Designed for real-time data collection and remote control, the ROV supports agriculture, aquaculture, and fisheries by providing live monitoring and smart control capabilities. Equipped with depth sensors, cameras, and onboard processing, the ROV is capable of navigating underwater environments efficiently. The goal of this project is to enable scalable and cost-effective solutions for sectors that require underwater observation, inspection, or assistance in remote tasks.
+    <br/><br/><br/>
+    ]]>
+</string>
+
+</resources>
