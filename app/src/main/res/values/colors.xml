@@ -4,7 +4,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lime">#bfff00</color>
     <color name="rebpurple">#663399</color>
-    <color name="primary">?attr/colorPrimary</color>
     <color name="pp">#EA8C8C</color>
     <color name="babypink">#F4C2C2</color>
+    <color name="yellow">#FFBF00</color>
 </resources>

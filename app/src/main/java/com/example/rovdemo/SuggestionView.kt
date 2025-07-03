@@ -2,6 +2,7 @@ package com.example.rovdemo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.rovdemo.databinding.ActivitySuggestionViewBinding
 
 class SuggestionView : AppCompatActivity() {

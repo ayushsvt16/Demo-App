@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center"
-        android:background="?attr/colorPrimary"
+        android:background="@drawable/bgbox"
         android:padding="10dp">
 
         <LinearLayout
@@ -40,7 +40,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/PDF"
-        android:layout_width="150dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
         android:backgroundTint="?attr/colorPrimary"
         android:layout_margin="10dp"
@@ -48,32 +48,36 @@
         app:cardCornerRadius="25dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:textSize="20dp"
             android:textStyle="bold"
+            android:background="@drawable/bgbox"
             android:textColor="@color/black"
             android:layout_gravity="center"
+            android:gravity="center"
             android:text="About ROV" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/Camera"
-        android:layout_width="150dp"
+        android:layout_width="220dp"
         android:layout_height="50dp"
-        android:backgroundTint="?attr/colorPrimary"
         android:layout_margin="10dp"
         android:layout_gravity="center"
         app:cardCornerRadius="25dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
+            android:layout_width="235dp"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:text="Open Camera" />
+            android:background="@drawable/bgbox"
+
+            android:gravity="center"
+            android:text="Open Camera"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
     </androidx.cardview.widget.CardView>
 
     <!-- Push everything below upward when possible -->
@@ -83,6 +87,27 @@
         android:layout_weight="1" />
 
     <!-- ✅ UPDATED: Scrollable Multi-line EditText for suggestions -->
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:boxCornerRadiusTopEnd="25dp"
+        app:boxCornerRadiusTopStart="25dp"
+        android:textAlignment="center"
+        android:textColorHint="@color/black"
+        android:id="@+id/name">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textAlignment="center"
+            android:background="@drawable/bgbox"
+            android:hint="Name"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <EditText
         android:id="@+id/sugg"
         android:layout_width="match_parent"
@@ -90,17 +115,19 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
+        android:layout_marginTop="10dp"
         android:overScrollMode="always"
-        android:background="?attr/colorPrimary"
-        android:hint="Suggestions"
+        android:background="@drawable/bgbox"
+        android:hint="💡 Suggestions"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textColorHint="@color/pp"
+        android:textColorHint="@color/black"
         android:padding="10dp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center" />
 
     <!-- ✅ Button stays at bottom -->
+
+
     <Button
         android:id="@+id/submit"
         android:layout_width="match_parent"
@@ -108,6 +135,7 @@
         android:layout_marginTop="10dp"
         android:text="Submit"
         android:textSize="20dp"
+        android:background="@drawable/bgbox"
         android:textColor="@color/black" />
 
 </LinearLayout>

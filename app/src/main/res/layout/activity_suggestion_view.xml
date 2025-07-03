@@ -5,7 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SuggestionView">
+    tools:context=".SuggestionView"
+
+    android:background="@drawable/suggbg">
 
 
     <LinearLayout
@@ -22,27 +24,32 @@
             android:layout_gravity="center"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:text="Suggested"
+            android:text="Thank you for Suggestion ♥"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/black"
-            android:background="?attr/colorPrimary"/>
+            android:textColor="@color/black"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:background="?attr/colorPrimary"
-                android:id="@+id/showsugg"
+            <Space
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="85dp" />
+
+            <TextView
+                android:id="@+id/showsugg"
+                android:layout_width="269dp"
+                android:layout_height="365dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:gravity="center"
-                android:textColor="@color/black"
-                android:layout_weight="1"/>
+                android:textColor="@color/black" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
         </LinearLayout>
     </LinearLayout>
 

@@ -5,7 +5,8 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="@color/white"
+    tools:context=".MainActivity1">
 
     <!-- Main content -->
     <LinearLayout
@@ -20,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
+            android:background="@drawable/bgbox"
             android:text="☰ Menu" />
 
         <!-- Download and Upload buttons -->
@@ -34,6 +36,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:background="@drawable/bgbox"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 android:text="Download" />
@@ -42,6 +45,7 @@
                 android:id="@+id/btnUpload"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bgbox"
                 android:layout_marginStart="4dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
@@ -59,7 +63,7 @@
             android:id="@+id/About"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-
+            android:background="@drawable/bgbox"
             android:layout_gravity="center"
             android:text="Click here" />
 
@@ -79,9 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Theme Options"
+            android:textColor="@color/black"
             android:textStyle="bold"
             android:textSize="18sp"
-            android:paddingBottom="10dp" />
+            android:paddingBottom="10dp"/>
 
         <Button
             android:id="@+id/Dark"

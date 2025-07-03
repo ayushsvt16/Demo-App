@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomPurpleButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:background">@drawable/bgbox</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="cornerRadius">20dp</item>
+    </style>
+
+</resources>

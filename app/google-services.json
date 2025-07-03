@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "580703875833",
+    "project_id": "rov-demo-app",
+    "storage_bucket": "rov-demo-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580703875833:android:2cea05e15f2f6a04a06828",
+        "android_client_info": {
+          "package_name": "com.example.rovdemo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCBoogiQRXoJ17jqXAPEMrB7v7QHsSmeNg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

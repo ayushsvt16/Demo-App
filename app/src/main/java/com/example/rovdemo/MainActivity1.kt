@@ -5,18 +5,19 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
-import com.example.rovdemo.databinding.ActivityMainBinding
+import com.example.rovdemo.databinding.ActivityMain1Binding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity1 : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMain1Binding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         // Inflate using ViewBinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMain1Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val sharedPreferences = getSharedPreferences("ThemePrefs", MODE_PRIVATE)
@@ -26,6 +27,8 @@ class MainActivity : AppCompatActivity() {
         binding.btnMenu.setOnClickListener {
             binding.drawerLayout.openDrawer(GravityCompat.START)
         }
+
+        binding.drawerLayout.setBackgroundColor(Color.WHITE)
 
         // Upload button action
         binding.btnUpload.setOnClickListener {
@@ -63,6 +66,8 @@ class MainActivity : AppCompatActivity() {
                 val view = sidebarLayout.getChildAt(i)
                 if (view is Button || view is TextView) {
                     view.setTextColor(Color.BLACK)
+                    binding.Dark.setTextColor(Color.BLACK)
+                    binding.Light.setTextColor(Color.BLACK)
                 }
             }
         }
