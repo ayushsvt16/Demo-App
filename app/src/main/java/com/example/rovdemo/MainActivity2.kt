@@ -7,24 +7,24 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.text.HtmlCompat
+import com.example.rovdemo.MainActivity2.Companion.KEY
 import com.example.rovdemo.databinding.ActivityMain2Binding
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
 class MainActivity2 : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMain2Binding
+    lateinit var binding: ActivityMain2Binding
     private val scrollHandler = Handler(Looper.getMainLooper())
     private var scrollY = 0
 
     companion object {
-        const val KEY = "package com.example.rovdemo.MainActivity2,KEY"
+        const val KEY = "package com.example.rovdemo.MainActivity2.KEY"
+        const val USERNAME = "username"
     }
 
     lateinit var database: DatabaseReference
@@ -53,24 +53,19 @@ class MainActivity2 : AppCompatActivity() {
         val theme = getSharedPreferences("ThemePrefs", MODE_PRIVATE).getString("theme", "light")
         if (theme == "dark") {
             binding.layoutMain2.setBackgroundColor(Color.BLACK)
-
-            // Text colors
             binding.textView.setTextColor(Color.BLACK)
             binding.textView2.setTextColor(Color.BLACK)
             suggBox.setTextColor(Color.BLACK)
             suggBox.setHintTextColor(Color.BLACK)
-
             pdfText.setTextColor(Color.BLACK)
             cameraText.setTextColor(Color.BLACK)
             submitBtn.setTextColor(Color.BLACK)
         } else {
             binding.layoutMain2.setBackgroundColor(Color.WHITE)
-
             binding.textView.setTextColor(Color.BLACK)
             binding.textView2.setTextColor(Color.BLACK)
             suggBox.setTextColor(Color.BLACK)
             suggBox.setHintTextColor(Color.BLACK)
-
             pdfText.setTextColor(Color.BLACK)
             cameraText.setTextColor(Color.BLACK)
             submitBtn.setTextColor(Color.BLACK)
@@ -101,41 +96,52 @@ class MainActivity2 : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Suggestion Submit
+        // Submit button
         submitBtn.setOnClickListener {
             val suggestion = suggBox.text.toString().trim()
             val name = binding.name.editText?.text.toString().trim()
 
-            // 🔒 Name validation
             if (name.isEmpty()) {
                 binding.name.error = "Please enter your name"
                 return@setOnClickListener
             } else {
-                binding.name.error = null // clear error if valid
+                binding.name.error = null
             }
 
-            val user = User(name, suggestion)
-
-            database = FirebaseDatabase.getInstance().getReference("Users")
-            database.child(name).setValue(user).addOnSuccessListener {
-                Toast.makeText(this, "Suggestion Submitted", Toast.LENGTH_SHORT).show()
-
-                // Clear input fields
-                binding.name.editText?.setText("")
-                binding.sugg.setText("")
-
-                val intent = Intent(this, SuggestionView::class.java)
-                intent.putExtra(KEY, suggestion)
-                startActivity(intent)
-            }.addOnFailureListener {
-                Toast.makeText(this, "Unable to submit Suggestion", Toast.LENGTH_SHORT).show()
-            }
+            readData(name)
         }
-
     }
 
     override fun onDestroy() {
         super.onDestroy()
         scrollHandler.removeCallbacksAndMessages(null)
+    }
+
+    private fun readData(name: String) {
+        database = FirebaseDatabase.getInstance().getReference("Users")
+        database.child(name).get().addOnSuccessListener {
+            if (it.exists()) {
+                val existingSuggestion = it.child("suggestion").value.toString()
+                val intent = Intent(this, SuggestionView::class.java)
+                intent.putExtra(KEY, "Thanks for your suggestion, it already exists ♥:\n\n$existingSuggestion")
+                intent.putExtra(USERNAME, name)
+                startActivity(intent)
+            } else {
+                val suggestion = binding.sugg.text.toString().trim()
+                val user = User(name, suggestion)
+                database.child(name).setValue(user).addOnSuccessListener {
+                    Toast.makeText(this, "Suggestion Submitted", Toast.LENGTH_SHORT).show()
+                    binding.name.editText?.setText("")
+                    binding.sugg.setText("")
+
+                    val intent = Intent(this, SuggestionView::class.java)
+                    intent.putExtra(KEY, suggestion)
+                    intent.putExtra(USERNAME, name)
+                    startActivity(intent)
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Unable to submit Suggestion", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 }

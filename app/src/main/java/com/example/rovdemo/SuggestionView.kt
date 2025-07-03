@@ -2,7 +2,8 @@ package com.example.rovdemo
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
+import com.example.rovdemo.MainActivity2.Companion.KEY
+import com.example.rovdemo.MainActivity2.Companion.USERNAME
 import com.example.rovdemo.databinding.ActivitySuggestionViewBinding
 
 class SuggestionView : AppCompatActivity() {
@@ -11,15 +12,19 @@ class SuggestionView : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        // ✅ Setup ViewBinding
         binding = ActivitySuggestionViewBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // ✅ Retrieve data from intent using KEY
-        val receivedText = intent.getStringExtra(MainActivity2.KEY)
+        val receivedText = intent.getStringExtra(KEY)
+        val name = intent.getStringExtra(USERNAME)
 
-        // ✅ Set it in the TextView
         binding.showsugg.text = receivedText
+
+        // Update heading with name if available
+        binding.textView3.text = if (!name.isNullOrEmpty()) {
+            "Thank you for Suggestion ♥\n\nWelcome back, $name"
+        } else {
+            "Thank you for Suggestion ♥"
+        }
     }
 }
