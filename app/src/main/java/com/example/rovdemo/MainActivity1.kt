@@ -5,7 +5,6 @@ import android.graphics.Color
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.GravityCompat
 import com.example.rovdemo.databinding.ActivityMain1Binding
 
@@ -78,7 +77,7 @@ class MainActivity1 : AppCompatActivity() {
         }
 
         binding.Remote.setOnClickListener{
-            startActivity(Intent(this, remote::class.java))
+            startActivity(Intent(this, RemoteActivity::class.java))
         }
     }
 }
