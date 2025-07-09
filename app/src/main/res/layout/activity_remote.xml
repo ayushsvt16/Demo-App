@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".remote"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bluegradbg">
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remote"
+        android:textStyle="bold"
+        android:textSize="25sp"
+        android:gravity="center"
+        android:textColor="@color/black" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Up and Down Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/upbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/up" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/downbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/down" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Forward -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="60dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/forwardbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:background="@drawable/circular_ripple"
+            android:foreground="@drawable/image_press_effect"
+            app:srcCompat="@drawable/fwd" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Left and Right -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/leftbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/left" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/rightbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/right" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <!-- Backward -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="60dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="@android:color/transparent">
+
+        <ImageView
+            android:id="@+id/backwardbtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            android:background="@drawable/circular_ripple"
+            android:foreground="@drawable/image_press_effect"
+            app:srcCompat="@drawable/bwd" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- CCW and CW -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/ccwbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/ccw" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp"
+            app:cardCornerRadius="60dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent">
+
+            <ImageView
+                android:id="@+id/cwbtn"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerInside"
+                android:background="@drawable/circular_ripple"
+                android:foreground="@drawable/image_press_effect"
+                app:srcCompat="@drawable/cw" />
+        </androidx.cardview.widget.CardView>
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+</LinearLayout>

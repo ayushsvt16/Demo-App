@@ -76,5 +76,9 @@ class MainActivity1 : AppCompatActivity() {
         binding.About.setOnClickListener {
             startActivity(Intent(this, MainActivity2::class.java))
         }
+
+        binding.Remote.setOnClickListener{
+            startActivity(Intent(this, remote::class.java))
+        }
     }
 }
