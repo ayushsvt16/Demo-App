@@ -10,6 +10,7 @@ import com.example.rovdemo.databinding.ActivityRemoteBinding
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.WebSocket
+import org.json.JSONObject
 
 class remote : AppCompatActivity() {
     private lateinit var binding: ActivityRemoteBinding
@@ -27,59 +28,57 @@ class remote : AppCompatActivity() {
         setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        websocketListener = WebsocketListener(viewModel)
+        websocketListener = WebsocketListener(viewModel) { socket ->
+            sendRegisterMessage(socket)
+        }
 
-        // Observe only connection status
         viewModel.socketStatus.observe(this, Observer { connected ->
             isConnected = connected
             binding.stat.text = if (connected) "Connected" else "Disconnected"
         })
-
-        // Remove this block if you don’t want to show all received messages
-        // viewModel.message.observe(this, Observer { message -> ... })
 
         binding.Switch.setOnClickListener {
             if (!isConnected) {
                 webSocket = okHttpClient.newWebSocket(createRequest(), websocketListener)
                 Toast.makeText(this, "Connecting WebSocket...", Toast.LENGTH_SHORT).show()
             } else {
-                webSocket?.send("Device Disconnected!!")
+                sendJson("disconnect", "app", mapOf("reason" to "Closed Manually"))
                 webSocket?.close(1000, "Closed Manually")
                 Toast.makeText(this, "Disconnecting WebSocket...", Toast.LENGTH_SHORT).show()
             }
         }
 
-        // Send movement commands via WebSocket only
+        // Movement Commands
         binding.upbtn.setOnClickListener {
-            webSocket?.send("up")
+            sendJson("movement", "app", mapOf("direction" to "up"))
             Toast.makeText(this, "Moving up...", Toast.LENGTH_SHORT).show()
         }
         binding.downbtn.setOnClickListener {
-            webSocket?.send("down")
+            sendJson("movement", "app", mapOf("direction" to "down"))
             Toast.makeText(this, "Moving down...", Toast.LENGTH_SHORT).show()
         }
         binding.forwardbtn.setOnClickListener {
-            webSocket?.send("forward")
+            sendJson("movement", "app", mapOf("direction" to "forward"))
             Toast.makeText(this, "Moving forward...", Toast.LENGTH_SHORT).show()
         }
+        binding.backwardbtn.setOnClickListener {
+            sendJson("movement", "app", mapOf("direction" to "backward"))
+            Toast.makeText(this, "Moving backward...", Toast.LENGTH_SHORT).show()
+        }
         binding.leftbtn.setOnClickListener {
-            webSocket?.send("left")
+            sendJson("movement", "app", mapOf("direction" to "left"))
             Toast.makeText(this, "Moving left...", Toast.LENGTH_SHORT).show()
         }
         binding.rightbtn.setOnClickListener {
-            webSocket?.send("right")
+            sendJson("movement", "app", mapOf("direction" to "right"))
             Toast.makeText(this, "Moving right...", Toast.LENGTH_SHORT).show()
         }
-        binding.backwardbtn.setOnClickListener {
-            webSocket?.send("backward")
-            Toast.makeText(this, "Moving back...", Toast.LENGTH_SHORT).show()
-        }
         binding.ccwbtn.setOnClickListener {
-            webSocket?.send("ccw")
+            sendJson("movement", "app", mapOf("direction" to "anticlockwise"))
             Toast.makeText(this, "Rotating CCW...", Toast.LENGTH_SHORT).show()
         }
         binding.cwbtn.setOnClickListener {
-            webSocket?.send("cw")
+            sendJson("movement", "app", mapOf("direction" to "clockwise"))
             Toast.makeText(this, "Rotating CW...", Toast.LENGTH_SHORT).show()
         }
     }
@@ -88,5 +87,22 @@ class remote : AppCompatActivity() {
         val websocketUrl =
             "wss://s14909.blr1.piesocket.com/v3/1?api_key=Hi4AGeft6p6ByGmqyS7Jb0ozwS3uJw5TzsBd7wtq&notify_self=1"
         return Request.Builder().url(websocketUrl).build()
+    }
+
+    private fun sendRegisterMessage(socket: WebSocket) {
+        val registerJson = JSONObject()
+        registerJson.put("type", "register")
+        registerJson.put("client", "app")
+        socket.send(registerJson.toString())
+    }
+
+    private fun sendJson(type: String, client: String, extra: Map<String, Any>) {
+        val json = JSONObject()
+        json.put("type", type)
+        json.put("client", client)
+        for ((key, value) in extra) {
+            json.put(key, value)
+        }
+        webSocket?.send(json.toString())
     }
 }
