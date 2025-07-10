@@ -93,7 +93,8 @@ class RemoteActivity : AppCompatActivity() {
 
     private fun createRequest(): Request {
         //val websocketUrl = "wss://s14909.blr1.piesocket.com/v3/1?api_key=Hi4AGeft6p6ByGmqyS7Jb0ozwS3uJw5TzsBd7wtq&notify_self=1"
-        val websocketUrl = "ws://172.16.64.35:8000"
+        //val websocketUrl = "ws://172.16.64.35:8000"
+        val websocketUrl = "ws://172.16.64.233:8000"
         return Request.Builder().url(websocketUrl).build()
     }
 
