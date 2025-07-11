@@ -25,9 +25,8 @@
         android:gravity="center"
         android:textColor="@color/black" />
 
-
-
     <!-- Up and Down Buttons -->
+    <!-- Up and Down Buttons with CardView IDs -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,6 +38,7 @@
             android:layout_weight="1" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/upCard"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"
@@ -53,6 +53,8 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/up" />
         </androidx.cardview.widget.CardView>
 
@@ -83,9 +85,8 @@
                 android:layout_gravity="center"
                 android:text="TV"
                 android:textColor="@color/black"
-                android:textSize="14sp"/>
+                android:textSize="14sp" />
         </FrameLayout>
-
 
         <Space
             android:layout_width="0dp"
@@ -93,6 +94,7 @@
             android:layout_weight="1" />
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/downCard"
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:layout_margin="8dp"
@@ -107,16 +109,17 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/down" />
-
         </androidx.cardview.widget.CardView>
 
         <Space
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1" />
-
     </LinearLayout>
+
 
     <Space
         android:layout_width="match_parent"
@@ -139,6 +142,8 @@
             android:scaleType="centerInside"
             android:background="@drawable/circular_ripple"
             android:foreground="@drawable/image_press_effect"
+            android:clickable="true"
+            android:focusable="true"
             app:srcCompat="@drawable/fwd" />
     </androidx.cardview.widget.CardView>
 
@@ -168,6 +173,8 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/left" />
         </androidx.cardview.widget.CardView>
 
@@ -191,6 +198,8 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/right" />
         </androidx.cardview.widget.CardView>
 
@@ -216,6 +225,8 @@
             android:scaleType="centerInside"
             android:background="@drawable/circular_ripple"
             android:foreground="@drawable/image_press_effect"
+            android:clickable="true"
+            android:focusable="true"
             app:srcCompat="@drawable/bwd" />
     </androidx.cardview.widget.CardView>
 
@@ -245,6 +256,8 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/ccw" />
         </androidx.cardview.widget.CardView>
 
@@ -268,6 +281,8 @@
                 android:scaleType="centerInside"
                 android:background="@drawable/circular_ripple"
                 android:foreground="@drawable/image_press_effect"
+                android:clickable="true"
+                android:focusable="true"
                 app:srcCompat="@drawable/cw" />
         </androidx.cardview.widget.CardView>
 

@@ -1,6 +1,7 @@
 package com.example.rovdemo
 
 import android.os.*
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
@@ -56,10 +57,17 @@ class RemoteActivity : AppCompatActivity() {
             }
         }
 
+        // Initially show downCard, hide upCard
+        binding.upCard.visibility = View.GONE
+        binding.downCard.visibility = View.VISIBLE
+
+        // Toggle behavior between up and down
+        setSingleTouch(binding.upbtn, "up", binding.upCard, binding.downCard)
+        setSingleTouch(binding.downbtn, "down", binding.downCard, binding.upCard)
+
+        // Continuous press actions
         setContinuousTouch(binding.forwardbtn, "forward")
         setContinuousTouch(binding.backwardbtn, "backward")
-        setContinuousTouch(binding.upbtn, "up")
-        setContinuousTouch(binding.downbtn, "down")
         setContinuousTouch(binding.leftbtn, "left")
         setContinuousTouch(binding.rightbtn, "right")
         setContinuousTouch(binding.ccwbtn, "anticlockwise")
@@ -84,7 +92,10 @@ class RemoteActivity : AppCompatActivity() {
                 }
 
                 MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-                    repeatRunnable?.let { handler.removeCallbacks(it) }
+                    repeatRunnable?.let {
+                        handler.removeCallbacks(it)
+                        Log.d("RemoteActivity", "Stopped $direction")
+                    }
                 }
             }
             true
@@ -92,9 +103,7 @@ class RemoteActivity : AppCompatActivity() {
     }
 
     private fun createRequest(): Request {
-        //val websocketUrl = "wss://s14909.blr1.piesocket.com/v3/1?api_key=Hi4AGeft6p6ByGmqyS7Jb0ozwS3uJw5TzsBd7wtq&notify_self=1"
-        //val websocketUrl = "ws://172.16.64.35:8000"
-        val websocketUrl = "ws://172.16.64.233:8000"
+        val websocketUrl = "ws://172.16.64.35:5000"
         return Request.Builder().url(websocketUrl).build()
     }
 
@@ -114,5 +123,29 @@ class RemoteActivity : AppCompatActivity() {
             json.put(key, value)
         }
         webSocket?.send(json.toString())
+    }
+
+    private fun setSingleTouch(
+        button: View,
+        direction: String,
+        currentCard: View,
+        oppositeCard: View
+    ) {
+        button.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_UP -> {
+                    if (isConnected) {
+                        sendJson("movement", "app", mapOf("direction" to direction))
+
+                        // Toggle CardView visibility
+                        currentCard.visibility = View.GONE
+                        oppositeCard.visibility = View.VISIBLE
+                    } else {
+                        Toast.makeText(this, "Connect first!", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+            true
+        }
     }
 }
